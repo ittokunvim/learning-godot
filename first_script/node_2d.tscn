@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cp4yqgns8mhpo"]
+
+[ext_resource type="PackedScene" uid="uid://cteatc7acij0n" path="res://sprite_2d.tscn" id="1_wtcfe"]
+
+[node name="Node2D" type="Node2D" unique_id=2111183768]
+
+[node name="Sprite2D" parent="." unique_id=459218631 instance=ExtResource("1_wtcfe")]
+
+[node name="Timer" type="Timer" parent="Sprite2D" unique_id=1939242844]
+autostart = true
+
+[node name="Button" type="Button" parent="." unique_id=971861119]
+offset_left = 1024.0
+offset_top = 508.0
+offset_right = 1149.0
+offset_bottom = 633.0
+
+[connection signal="pressed" from="Button" to="Sprite2D" method="_on_button_pressed"]

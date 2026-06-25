@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="first_script"
-run/main_scene="uid://cteatc7acij0n"
+run/main_scene="uid://cp4yqgns8mhpo"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
