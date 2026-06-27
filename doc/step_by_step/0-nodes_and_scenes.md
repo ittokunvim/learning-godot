@@ -1,7 +1,3 @@
-これからのレッスンでは最初の[2Dゲーム](https://docs.godotengine.org/ja/4.x/getting_started/first_2d_game/index.html#doc-your-first-2d-game)を作成することになります。
-
-このゲームを作るにつれてゲーム開発に必要な基礎やこのゲームエンジンについて学ぶことになるでしょう。
-
 # ノードとシーン
 
 > 参考：https://docs.godotengine.org/ja/4.x/getting_started/step_by_step/nodes_and_scenes.html
