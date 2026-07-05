@@ -45,6 +45,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b3mxk"]
+height = 26.0
 
 [node name="Mob" type="RigidBody2D" unique_id=1844115329]
 collision_mask = 0
@@ -58,7 +59,9 @@ sprite_frames = SubResource("SpriteFrames_jfba5")
 animation = &"fly"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1957552230]
+position = Vector2(14, 0)
 rotation = 1.5707964
+scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_b3mxk")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1358699909]

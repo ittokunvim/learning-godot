@@ -31,7 +31,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hqtel"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_sweqy"]
 
 [node name="Player" type="Area2D" unique_id=1353397723]
 script = ExtResource("1_sweqy")
@@ -43,6 +43,8 @@ sprite_frames = SubResource("SpriteFrames_dw050")
 animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1380148401]
-shape = SubResource("CapsuleShape2D_hqtel")
+position = Vector2(0, -6)
+scale = Vector2(2.2, 2.2)
+shape = SubResource("CircleShape2D_sweqy")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
