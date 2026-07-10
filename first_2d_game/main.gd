@@ -3,24 +3,18 @@ extends Node
 @export var mob_scene: PackedScene # モブシーンを定義
 var score
 
-func _ready() -> void:
-	pass
-
-
-func _process(_delta: float) -> void:
-	pass
-
-
+# ゲームオーバー時に実行される関数
 func game_over() -> void:
 	$ScoreTimer.stop()
 	$MobTimer.stop()
-	
+
 	$HUD.show_game_over()
-	
+
 	$Music.stop()
 	$DeathSound.play()
 
 
+# ゲーム開始時に実行される関数
 func new_game() -> void:
 	score = 0
 	$Player.start($StartPosition.position)
@@ -28,12 +22,13 @@ func new_game() -> void:
 
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready")
-	
+
 	get_tree().call_group("mobs", "queue_free")
-	
+
 	$Music.play()
 
 
+# タイムアウトごとにスコアを加算し反映する
 func _on_score_timer_timeout() -> void:
 	score += 1
 	

@@ -26,6 +26,7 @@ grow_vertical = 2
 color = Color(0, 0.7058824, 0.7058824, 1)
 
 [node name="Player" parent="." unique_id=1353397723 instance=ExtResource("1_ig7tw")]
+position = Vector2(240, 240)
 
 [node name="MobTimer" type="Timer" parent="." unique_id=285980962]
 wait_time = 0.5
