@@ -47,7 +47,7 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b3mxk"]
 height = 26.0
 
-[node name="Mob" type="RigidBody2D" unique_id=1844115329]
+[node name="Mob" type="RigidBody2D" unique_id=1844115329 groups=["mobs"]]
 collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_1qmh0")
