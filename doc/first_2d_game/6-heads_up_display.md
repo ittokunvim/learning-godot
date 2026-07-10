@@ -165,7 +165,7 @@ $HUD.update_score(score)
 次にメインの`new_game()`関数に以下のコードを追加します。
 
 ```godotengine
-get_tree().call_group("mobs", "quere_free")
+get_tree().call_group("mobs", "queue_free")
 ```
 
 `call_group()`関数はグループ内のすべてのノードに対して名前付きの関数を呼び出します。
