@@ -1,5 +1,10 @@
 extends CharacterBody3D
 
+
+# プレイヤーに踏みつけられた時に発信されるシグナル
+signal squashed
+
+
 # モブの最低速度
 @export var min_speed = 10
 # モブの最高速度
@@ -24,5 +29,12 @@ func initialize(start_position, player_position):
 	velocity = velocity.rotated(Vector3.UP, rotation.y)
 
 
+# 画面外に出たら、削除する
 func _on_visible_on_screen_notifier_3d_screen_exited() -> void:
+	queue_free()
+
+
+# 踏みつけられた時にシグナルを発信し、削除する
+func squash():
+	squashed.emit()
 	queue_free()

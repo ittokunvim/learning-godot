@@ -5,7 +5,10 @@ extends CharacterBody3D
 @export var speed = 14
 # 空中の落下速度
 @export var fall_acceleration = 75
-
+# ジャンプ時、プレイヤーに加わる垂直方向の値
+@export var jump_impulse = 20
+# 踏み付け時、プレイヤーに加わる垂直方向の値
+@export var bounce_impulse = 16
 
 var target_velocity = Vector3.ZERO
 
@@ -36,6 +39,32 @@ func _physics_process(delta: float) -> void:
 	# 鉛直速度、キャラクタが空中にいる場合、落下する（重力）
 	if not is_on_floor():
 		target_velocity.y = target_velocity.y - (fall_acceleration * delta)
+	
+	# プレイヤーが床にいてジャンプボタンが押された時、ジャンプする
+	if is_on_floor() and Input.is_action_just_pressed("jump"):
+		target_velocity.y = jump_impulse
+	
+	# すべての衝突を処理
+	for index in range(get_slide_collision_count()):
+		# プレイヤーとの衝突を取得
+		var collision = get_slide_collision(index)
+		
+		# 下記のコード`is_in_group("mob")`のためのコード
+		# もしも1フレームでモブの衝突が重複していると以下のコードでポインタエラーとなるため
+		if collision.get_collider() == null:
+			continue
+		
+		# 衝突がモブであった場合
+		if collision.get_collider().is_in_group("mob"):
+			# モブの衝突を取得
+			var mob = collision.get_collider()
+			
+			# 踏みつけで検出されていることをチェック
+			if Vector3.UP.dot(collision.get_normal()) > 0.1:
+				# モブを踏みつけ、プレイヤーを跳ねさせ、処理を抜ける
+				mob.squash()
+				target_velocity.y = bounce_impulse
+				break
 
 	# キャラクタを動かす
 	velocity = target_velocity
