@@ -81,4 +81,5 @@ debug_custom_color = Color(0, 0, 1, 1)
 [node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath" unique_id=1810347010]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, -15, 0, -15)
 
+[connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]

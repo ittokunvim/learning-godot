@@ -10,6 +10,7 @@ signal squashed
 # モブの最高速度
 @export var max_speed = 18
 
+
 func _physics_process(delta: float) -> void:
 	move_and_slide()
 

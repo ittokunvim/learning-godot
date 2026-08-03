@@ -1,6 +1,10 @@
 extends CharacterBody3D
 
 
+# プレイヤーがモブにあたった時に発信するシグナル
+signal hit
+
+
 # プレイヤーの移動速度
 @export var speed = 14
 # 空中の落下速度
@@ -69,3 +73,12 @@ func _physics_process(delta: float) -> void:
 	# キャラクタを動かす
 	velocity = target_velocity
 	move_and_slide()
+
+# プレイヤーがモブにあたった時にシグナルを発信して、削除する
+func die():
+	hit.emit()
+	queue_free()
+
+
+func _on_mob_detector_body_entered(body: Node3D) -> void:
+	die()
