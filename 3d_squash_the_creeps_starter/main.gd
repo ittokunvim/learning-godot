@@ -4,6 +4,9 @@ extends Node
 @export var mob_scene: PackedScene
 
 
+func _ready() -> void:
+	$UserInterface/Retry.hide()
+
 func _on_mob_timer_timeout() -> void:
 	# モブシーンのインスタンス化
 	var mob = mob_scene.instantiate()
@@ -20,7 +23,16 @@ func _on_mob_timer_timeout() -> void:
 	
 	# メインシーンに生成したモブを追加
 	add_child(mob)
+	
+	# モブが踏みつけられた時、ScoreLabelにシグナルを送る
+	mob.squashed.connect($UserInterface/ScoreLabel._on_mob_squashed.bind())
 
 
 func _on_player_hit() -> void:
 	$MobTimer.stop()
+	$UserInterface/Retry.show()
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept") and $UserInterface/Retry.visible:
+		get_tree().reload_current_scene()

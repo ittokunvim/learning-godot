@@ -20,6 +20,10 @@ run/main_scene="uid://2wap0283yk0r"
 config/features=PackedStringArray("4.6")
 config/icon="res://icon.webp"
 
+[autoload]
+
+MusicPlayer="*uid://dwgxgvhij3gfx"
+
 [display]
 
 window/size/viewport_width=720
