@@ -35,6 +35,10 @@ func _physics_process(delta: float) -> void:
 		direction = direction.normalized()
 		# basisプロパティでノードの回転を計算
 		$Pivot.basis = Basis.looking_at(direction)
+		# アニメーションの速度を4倍
+		$AnimationPlayer.speed_scale = 4
+	else:
+		$AnimationPlayer.speed_scale = 1
 
 	# 地表速度
 	target_velocity.x = direction.x * speed
@@ -73,6 +77,10 @@ func _physics_process(delta: float) -> void:
 	# キャラクタを動かす
 	velocity = target_velocity
 	move_and_slide()
+	
+	# 孤を描くようにジャンプする
+	$Pivot.rotation.x = PI / 6 * velocity.y / jump_impulse
+
 
 # プレイヤーがモブにあたった時にシグナルを発信して、削除する
 func die():
@@ -80,5 +88,6 @@ func die():
 	queue_free()
 
 
+@warning_ignore("unused_parameter")
 func _on_mob_detector_body_entered(body: Node3D) -> void:
 	die()
