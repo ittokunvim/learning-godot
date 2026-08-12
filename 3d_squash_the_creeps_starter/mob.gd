@@ -11,7 +11,7 @@ signal squashed
 @export var max_speed = 18
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 
@@ -29,7 +29,7 @@ func initialize(start_position, player_position):
 	# モブのY軸の回転方向に基づいて回転させ、移動する
 	velocity = velocity.rotated(Vector3.UP, rotation.y)
 	# `random_speed`に基づいて、アニメーションの再生速度を変更
-	$AnimationPlayer.speed_scale = random_speed / min_speed
+	$AnimationPlayer.speed_scale = random_speed / float(min_speed)
 
 
 

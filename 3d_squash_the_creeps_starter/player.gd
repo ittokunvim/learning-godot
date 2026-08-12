@@ -88,6 +88,5 @@ func die():
 	queue_free()
 
 
-@warning_ignore("unused_parameter")
-func _on_mob_detector_body_entered(body: Node3D) -> void:
+func _on_mob_detector_body_entered(_body: Node3D) -> void:
 	die()
